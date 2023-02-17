@@ -1,5 +1,5 @@
-const FoodPerSecond = 1
+const FoodPerSecond = 1;
 
 export {
-    FoodPerSecond
-}
+  FoodPerSecond
+};

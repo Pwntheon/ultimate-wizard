@@ -1,10 +1,10 @@
-import { RecoilRoot } from 'recoil';
+import { RecoilRoot } from "recoil";
 
-import TestContainer from './testcontainer'
-import TestComp from './testcomp'
-import Villagers from './panels/villagers/villagers'
-import TempActions from './panels/controls/tempactions';
-import { EngineContextProvider } from './game/engineprovider';
+import TestContainer from "./testcontainer";
+import TestComp from "./testcomp";
+import Villagers from "./panels/villagers/villagers";
+import TempActions from "./panels/controls/tempactions";
+import { EngineContextProvider } from "./game/engineprovider";
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
         </TestContainer>
       </EngineContextProvider>
     </RecoilRoot>
-  )
+  );
 }
 
-export default App
+export default App;
