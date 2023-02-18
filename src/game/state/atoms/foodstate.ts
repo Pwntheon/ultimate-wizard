@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 const FoodState = atom({
   key: "food",
-  default: 0
+  default: 10
 });
 
 export default FoodState;

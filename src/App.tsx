@@ -1,21 +1,20 @@
 import { RecoilRoot } from "recoil";
+import RecoilNexus from "recoil-nexus";
 
-import TestContainer from "./testcontainer";
-import TestComp from "./testcomp";
-import Villagers from "./panels/villagers/villagers";
+import Population from "./panels/population/Population";
 import TempActions from "./panels/controls/tempactions";
 import { EngineContextProvider } from "./game/engineprovider";
+import BasicResources from "./panels/economy/basicResources";
 
 function App() {
 
   return (
     <RecoilRoot>
+      <RecoilNexus />
       <EngineContextProvider>
-        <Villagers />
+        <Population />
+        <BasicResources />
         <TempActions />
-        <TestContainer>
-          <TestComp text="Hello from inner comp" />
-        </TestContainer>
       </EngineContextProvider>
     </RecoilRoot>
   );

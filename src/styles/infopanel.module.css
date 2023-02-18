@@ -1,0 +1,12 @@
+.entry {
+  border: 1px solid white;
+  display: flex;
+}
+
+.label {
+  border: 1px solid black;
+}
+
+.data {
+  border: 1px solid black;
+}

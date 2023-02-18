@@ -1,19 +1,28 @@
-import VillagersProcessor from "@/game/processors/villagersprocessor";
-import { useEngine } from "@/hooks/useengine";
+import FoodState from "@/game/state/atoms/foodstate";
 import { useRecoilState } from "recoil";
 import VillagerState from "../../game/state/atoms/villagersstate";
 
-export default function TempActions() {
-  const [_, setVillagers] = useRecoilState(VillagerState);
-  const engine = useEngine();
+const villager = {
+  basePrice: 10,
+  creep: 1.1
+};
 
-  const addVillager = () => setVillagers(n => n + 1);
-  const addProcessor = () => engine.addProcessor(VillagersProcessor);
+export default function TempActions() {
+  const [villagers, setVillagers] = useRecoilState(VillagerState);
+  const [food, setFood] = useRecoilState(FoodState);
+
+  const price = villager.basePrice * Math.pow(villager.creep, villagers);
+  const canAfford = food >= price;
+
+  function buy() {
+    setFood(f => f - price);
+    setVillagers(n => n + 1);
+  }
 
   return (
     <>
-      <button onClick={addVillager}>Recruit villager</button>
-      <button onClick={addProcessor}>Gather food</button>
+      <button
+        onClick={buy} disabled={!canAfford}>Recruit villager ({~~price} food)</button>
     </>
   );
 }

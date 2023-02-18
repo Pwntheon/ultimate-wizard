@@ -1,14 +1,8 @@
-import { useRecoilState } from 'recoil';
-import FoodState from '../../game/state/atoms/foodstate';
-import classes from '@/styles/panel.module.css';
+import { useRecoilState } from "recoil";
+import FoodState from "../../game/state/atoms/foodstate";
+import ResourceDisplay from "../resourcedisplay";
 
-export default function Villagers() {
-    const [food] = useRecoilState(FoodState)
-    return (
-        <div className={classes.container}>
-            <div className={classes.data}>
-                {food}
-            </div>
-        </div>
-    );
+export default function BasicResources() {
+  const [food] = useRecoilState(FoodState);
+  return <ResourceDisplay label="Food" value={~~food} />;
 }

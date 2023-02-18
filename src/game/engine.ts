@@ -48,7 +48,7 @@ export default class Engine {
     const deltaTime = time - this.#lastTime;
     if (deltaTime > this.interval) {
       this.#lastTime = time - (deltaTime % this.interval);
-      this.#processors.forEach(process => process(deltaTime));
+      this.#processors.forEach(process => process(deltaTime / 1000));
     }
   }
 }
