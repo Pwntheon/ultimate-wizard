@@ -7,7 +7,9 @@ import VillagerState from "../state/atoms/villagersstate";
 const VillagersProcessor: Processor = (deltaTime: number) => {
   const villagers = getRecoil(VillagerState);
   setRecoil(FoodState, (food) =>
-    food + (villagers * FoodPerSecond * deltaTime)
+    food.plus(
+      villagers.multiply(FoodPerSecond).multiply(deltaTime)
+    )
   );
 };
 
