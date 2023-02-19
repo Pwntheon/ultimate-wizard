@@ -1,5 +1,5 @@
-import Processor from "./processor";
-import Trace from "./utils/trace";
+import Processor from "./processors/processor";
+import Trace from "@/utils/trace";
 
 export default class Engine {
   #refreshRate: number;
@@ -38,6 +38,7 @@ export default class Engine {
   }
 
   cleanup() {
+    this.#processors = [];
     if (this.#started) this.stop();
   }
 

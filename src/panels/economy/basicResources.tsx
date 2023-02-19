@@ -1,9 +1,12 @@
-import F from "@/game/utils/format";
-import { useRecoilState } from "recoil";
-import FoodState from "../../game/state/atoms/foodstate";
+import FoodResource from "@/game/resources/foodresource";
+import ManaResource from "@/game/resources/manaresource";
 import ResourceDisplay from "../resourcedisplay";
 
 export default function BasicResources() {
-  const [food] = useRecoilState(FoodState);
-  return <ResourceDisplay label="Food" value={F(food)} />;
+  return (
+    <>
+      <ResourceDisplay resource={FoodResource} />
+      <ResourceDisplay resource={ManaResource} />
+    </>
+  );
 }

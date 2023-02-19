@@ -1,5 +1,7 @@
-const FoodPerSecond = 1;
+const FoodPerVillager = 1;
+const ManaPerChanneler = 0.1;
 
 export {
-  FoodPerSecond
+  FoodPerVillager,
+  ManaPerChanneler
 };

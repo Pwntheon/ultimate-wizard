@@ -1,5 +1,5 @@
 import Decimal from "break_infinity.js";
-import GeneralSettings from "../settings/generalsettings";
+import GeneralSettings from "../game/settings/generalsettings";
 import { format } from "swarm-numberformat";
 
 function F(number: Decimal) {

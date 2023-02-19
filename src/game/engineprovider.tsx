@@ -11,7 +11,7 @@ export interface EngineContextProviderProps {
   children: React.ReactNode
 }
 
-export const EngineContext = React.createContext({ engine: new Engine(GeneralSettings.framerate) });
+export const EngineContext = React.createContext<EngineContextInterface | null>(null);
 
 export function EngineContextProvider({ children }: EngineContextProviderProps) {
   const [contextValue] = useState({ engine: new Engine(GeneralSettings.framerate) });
@@ -19,7 +19,7 @@ export function EngineContextProvider({ children }: EngineContextProviderProps) 
     Processors.forEach(p => contextValue.engine.addProcessor(p));
     contextValue.engine.start();
     return () => contextValue.engine.cleanup();
-  }, [contextValue]);
+  }, []);
 
   return <EngineContext.Provider value={contextValue}>{children}</EngineContext.Provider>;
 }

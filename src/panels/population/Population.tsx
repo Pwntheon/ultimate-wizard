@@ -1,9 +1,12 @@
-import { useRecoilState } from "recoil";
-import VillagerState from "@/game/state/atoms/villagersstate";
 import ResourceDisplay from "../resourcedisplay";
-import F from "@/game/utils/format";
+import VillagerResource from "@/game/resources/villagerresource";
+import ChannelerResource from "@/game/resources/channelerresource";
 
 export default function Population() {
-  const [villagers] = useRecoilState(VillagerState);
-  return <ResourceDisplay label="Villagers" value={F(villagers)} />;
+  return (
+    <>
+      <ResourceDisplay resource={VillagerResource} />
+      <ResourceDisplay resource={ChannelerResource} />
+    </>
+  );
 }

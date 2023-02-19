@@ -1,5 +1,5 @@
 import { BuyableResource, Cost } from "@/game/resources/resource";
-import F from "@/game/utils/format";
+import F from "@/utils/format";
 import Decimal from "break_infinity.js";
 import { useRecoilState } from "recoil";
 
@@ -30,5 +30,5 @@ export default function BuyButton({ resource }: BuyButtonProps) {
 
   const canBuy = priceState.greaterThanOrEqualTo(price(resourceState, resource.cost));
 
-  return <button onClick={buy} disabled={!canBuy}>Buy 1 {resource.name} ({renderPrice(resourceState, resource.cost)})</button>;
+  return <button onClick={buy} disabled={!canBuy}>Buy 1 {resource.singularName} ({renderPrice(resourceState, resource.cost)})</button>;
 }

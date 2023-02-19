@@ -1,7 +1,9 @@
+import ChannelerProcessor from "./channelerProcessor";
 import VillagersProcessor from "./villagersprocessor";
 
 const Processors =  [
-  VillagersProcessor
+  VillagersProcessor,
+  ChannelerProcessor
 ];
 
 export default Processors;
