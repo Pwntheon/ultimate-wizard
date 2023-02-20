@@ -7,12 +7,12 @@ import Spell from "./spell";
 
 const SpawnFood: Spell = {
   name: "Spawn Food",
-  description: "Spawns 100 food. Each villager increases this amount by 10%",
+  description: "Spawns 1000 food. Each villager increases this amount by 20% (multiplicatively)",
   cost: new Decimal(10),
   cast: () => {
     const villagers = getRecoil(VillagerState);
     setRecoil(FoodState, f =>
-      f.plus(new Decimal(1.1).pow(villagers).multiply(100))
+      f.plus(new Decimal(1.2).pow(villagers).multiply(1000))
     );
     setRecoil(ManaState, m => m.minus(10));
   }

@@ -14,7 +14,7 @@ interface Resource {
 }
 
 export interface BuyableResource extends Resource {
-  cost: Cost
+  costs: Cost[]
 }
 
 export default Resource;

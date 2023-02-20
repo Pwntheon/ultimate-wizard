@@ -1,6 +1,6 @@
 import ResourceDisplay from "../resourcedisplay";
-import VillagerResource from "@/game/resources/villagerresource";
-import ChannelerResource from "@/game/resources/channelerresource";
+import VillagerResource from "@/game/resources/buyable/villagerresource";
+import ChannelerResource from "@/game/resources/buyable/channelerresource";
 
 export default function Population() {
   return (

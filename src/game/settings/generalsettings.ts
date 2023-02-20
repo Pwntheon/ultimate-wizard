@@ -1,5 +1,5 @@
 const GeneralSettings = {
-  framerate: 30,
+  framerate: 3,
   numberFormat: "engineering"
 };
 

@@ -9,7 +9,7 @@
 
 4. Create panel component that can contain list of resources. We probably want one for population, one for economy and one for magic for now
 
-5. Implement multiple costs. Channelers for instance, should cost 1 villager and something else
+5. Create simple tooltip to show costs for buyables & spells
 
 6. Clean up spells handling
 

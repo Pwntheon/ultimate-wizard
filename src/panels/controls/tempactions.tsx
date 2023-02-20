@@ -1,5 +1,5 @@
-import ChannelerResource from "@/game/resources/channelerresource";
-import VillagerResource from "@/game/resources/villagerresource";
+import ChannelerResource from "@/game/resources/buyable/channelerresource";
+import VillagerResource from "@/game/resources/buyable/villagerresource";
 import SpawnFood from "@/game/spells/spawnfood";
 import BuyButton from "./buybutton";
 import CastButton from "./castbutton";
