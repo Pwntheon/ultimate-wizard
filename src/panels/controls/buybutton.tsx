@@ -19,13 +19,11 @@ export interface BuyButtonProps {
 }
 
 export default function BuyButton({ resource }: BuyButtonProps) {
-  
-  const [buyableState, setBuyableState] = useRecoilState(resource.state);
-  const resourceStates = resource.costs.map(c => useRecoilState(c.resource.state));
 
-  const priceState = resource.costs.map((c, i) => {
+  const [buyableState, setBuyableState] = useRecoilState(resource.state);
+  const priceState = resource.costs.map(c => {
     const price = getPrice(buyableState, c);
-    const [state, setState] = resourceStates[i];
+    const [state, setState] = useRecoilState(c.resource.state);
     return {
       canAfford: state.greaterThanOrEqualTo(price),
       price: price,
