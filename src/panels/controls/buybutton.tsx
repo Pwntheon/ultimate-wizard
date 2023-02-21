@@ -23,7 +23,7 @@ export default function BuyButton({ resource }: BuyButtonProps) {
       title={renderPrice(price)}
       onClick={() => buy(resource)}
       disabled={!canBuy}>
-      Buy 1 {resource.singularName}
+      {resource.verb} 1 {resource.singularName}
     </button>
   );
 }

@@ -25,6 +25,7 @@ const ChannelerResource: BuyableResource = {
   singularName: "Channeler",
   state: ChannelerState,
   price: ChannelerPrice,
+  verb: "Train"
 };
 
 export default ChannelerResource;

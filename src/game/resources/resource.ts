@@ -17,7 +17,8 @@ interface Resource {
 }
 
 export interface BuyableResource extends Resource {
-  price: GetPrice
+  price: GetPrice,
+  verb: string
 }
 
 // Todo: Should buyable resource just be a class at this point?

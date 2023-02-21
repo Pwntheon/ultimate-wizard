@@ -20,7 +20,8 @@ const VillagerResource: BuyableResource = {
   name: "Villagers",
   singularName: "Villager",
   state: VillagerState,
-  price: VillagerPrice
+  price: VillagerPrice,
+  verb: "Recruit"
 };
 
 export default VillagerResource;
