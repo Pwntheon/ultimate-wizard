@@ -1,17 +1,11 @@
-import Resource, { BuyableResource, Cost } from "@/game/resources/resource";
+import { buy, BuyableResource, Cost } from "@/game/resources/resource";
 import F from "@/utils/format";
-import Decimal from "break_infinity.js";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
-function getPrice(owned: Decimal, cost: Cost) {
-  return cost.basePrice.multiply(
-    cost.increase.pow(owned)
-  );
-}
 
-function renderPrice(owned: Decimal, price: Decimal, resource: Resource) {
-  const amount = F(price);
-  return `${amount} ${(amount === "1" ? resource.singularName : resource.name)}`;
+// TODO: Popper to show price
+function renderPrice(price: Cost[]) {
+  return price.map(c => `${F(c.price)} ${(F(c.price) === "1" ? c.resource.singularName : c.resource.name)}`).join(", ");
 }
 
 export interface BuyButtonProps {
@@ -19,26 +13,17 @@ export interface BuyButtonProps {
 }
 
 export default function BuyButton({ resource }: BuyButtonProps) {
+  const price = useRecoilValue(resource.price);
 
-  const [buyableState, setBuyableState] = useRecoilState(resource.state);
-  const priceState = resource.costs.map(c => {
-    const price = getPrice(buyableState, c);
-    const [state, setState] = useRecoilState(c.resource.state);
-    return {
-      canAfford: state.greaterThanOrEqualTo(price),
-      price: price,
-      label: renderPrice(state, price, c.resource),
-      pay: () => setState(current => current.subtract(price))
-    };
-  });
+  const canBuy = price.every(p => p.owned.greaterThanOrEqualTo(p.price));
 
-  function buy() {
-    priceState.forEach((c) => c.pay());
-    setBuyableState(r => r.add(1));
-  }
-
-  const canBuy = priceState.every(p => p.canAfford);
-
-  // TODO: Popper to show price
-  return <button title={priceState.map(p => p.label).join(", ")} onClick={buy} disabled={!canBuy}>Buy 1 {resource.singularName}</button>;
+  // TODO: separate into container and presentation components
+  return (
+    <button
+      title={renderPrice(price)}
+      onClick={() => buy(resource)}
+      disabled={!canBuy}>
+      Buy 1 {resource.singularName}
+    </button>
+  );
 }

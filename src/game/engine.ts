@@ -1,5 +1,4 @@
 import Processor from "./processors/processor";
-import Trace from "@/utils/trace";
 
 export default class Engine {
   #refreshRate: number;
@@ -15,7 +14,7 @@ export default class Engine {
 
   setRefreshRate(refreshRate: number) {
     this.#refreshRate = refreshRate;
-    Trace(`Refresh rate set to ${refreshRate}`);
+    console.log(`Refresh rate set to ${refreshRate}`);
   }
 
   addProcessor(processor: Processor) {
@@ -27,14 +26,14 @@ export default class Engine {
 
     this.#lastTime = window.performance.now();
     this.#started = true;
-    Trace("Main loop started");
+    console.log("Main loop started");
     this.#run(0);
   }
 
   stop() {
     if (!this.#started) throw new Error("Attempted to stop game loop when it's not running");
     this.#started = false;
-    Trace("Main loop stopped");
+    console.log("Main loop stopped");
   }
 
   cleanup() {
